@@ -1,0 +1,242 @@
+@startuml
+class Properties.Colour {
+- String name
++ String getName()
+}
+enum Enums.TimeOfDay {
++  MORNING
++  AFTERNOON
++  EVENING
++ {static} void beGreate(TimeOfDay)
+}
+class SurroundingWorld.Path {
+}
+class SurroundingWorld.Home {
+}
+abstract class World {
++ {static} void beOk()
++ {static} void beOk(EnvironmentObject)
+}
+class Emotions.Fear {
+- String name
+- int LevelOfFear
++ String getName()
++ int hashCode()
++ boolean equals(Object)
++ int getLevel()
++ void setLevel(int)
++ void showEmotion(Person)
++ String toString()
+}
+class Emotions.Fear$Shudder {
+~ String name
+~ void shake(Person)
+}
+class Things.Underclothes {
+- String LevelOfCleanliness
++ String getLevelOfCleanliness()
+}
+class Creatures.Lyus {
+- Feelingable emotion1
+- Feelingable emotion2
+- Feelingable emotion3
++ void changeLevelofHappiness(int,String)
++ void eat(Meal)
++ void kiss(Person,Person)
++ void watch(int,Thing)
++ void watch(int,EnvironmentObject)
++ void driveaCar(int,EnvironmentObject)
++ void setStatement(Feelingable,int)
++ void showStatement(int,int)
++ void goaway()
++ void driveway(EnvironmentObject,EnvironmentObject)
++ void FeelPain(int)
++ void showThoughts(String)
+}
+class Creatures.Lyus$Pain {
+~ int level
+~ void influencePerson(int,Person)
+}
+interface Interface.PhysicalMove {
++ void eat(Meal)
++ void watch(int,Thing)
+}
+class Things.Meal {
+- int Weight
++ int getWeight()
++ void setWeight(int)
+}
+class Main {
++ {static} void main(String[])
+}
+class Exceptions.NoneEatingException {
+}
+abstract class SurroundingWorld.EnvironmentObject {
+# String name
++ String getName()
+}
+class Things.LaundryTank {
+- Underclothes underclothes
+- Colour colour
+- Shape shape
++ Underclothes getUnderclothes()
++ String getColour()
++ String getShape()
+}
+class SurroundingWorld.Road {
++ void berough(Person)
+}
+abstract class Creatures.Creatures {
+# String name
+# Survivability existence
++ void setExistence(Survivability)
++ String getName()
++ Survivability getExistence()
+}
+class Exceptions.CarBreakdownException {
+}
+enum Enums.Survivability {
++  ALIVE
++  DIED
+}
+interface Interface.Drivable {
++ void OccupyTheGarage(int)
+}
+class Emotions.Wonderment {
+- String name
+- int LevelofWonderment
++ int hashCode()
++ String getName()
++ String toString()
++ boolean equals(Object)
++ int getLevel()
++ void showEmotion(Person)
++ void setLevel(int)
+}
+class SurroundingWorld.Restaraunt {
+- String cuisine
++ String getcuisine()
++ String toString()
+}
+interface Interface.Feelingable {
++ void showEmotion(Person)
++ void setLevel(int)
++ int getLevel()
+}
+class Creatures.Gage {
+}
+class Emotions.Happiness {
+- String name
+- int Level
++ String getName()
++ int hashCode()
++ boolean equals(Object)
++ int getLevel()
++ void showEmotion(Person)
++ void setLevel(int)
+}
+class Creatures.Person {
+# int Satiety
+# float Tiredness
+- int ConcentrationOfAttention
+# Feelingable emotion1
+# Feelingable emotion2
+# Feelingable emotion3
++ float getTiredness()
++ int getConcentrationOfAttention()
++ void upgradeConcentration(int)
++ void downgradeConcentration(int)
++ void setTiredness(int)
++ int getSatiety()
++ void setSatiety(int)
++ int getLevelOfEmotion3()
++ void setLevelofHappiness(int)
++ void changeLevelofHappiness(int,String)
++ int hashCode()
++ boolean equals(Object)
++ String toString()
++ {static} void PublicDrive(Person,Person,Time,Person,EnvironmentObject)
+}
+interface Interface.PersonFactory {
++ {static} Person create()
+}
+enum Enums.Time {
++  YESTERDAY
++  TODAY
++  TOMORROW
+}
+class SurroundingWorld.ParkingLot {
+- String Fulness
+- String city
+- EnvironmentObject owner
+- EnvironmentObject NearbyObject
++ String getFulness()
++ String toString()
++ String getcity()
++ EnvironmentObject getOwner()
++ EnvironmentObject getNearbyObject()
+}
+class Properties.Shape {
+- String name
++ String getName()
+}
+class SurroundingWorld.Hospital {
+- String SizeLevel
++ String getSizeLevel()
++ String toString()
+}
+class Creatures.Undernatural {
++ void scare(Person,int)
++ void beInThoughts(Person,boolean)
+}
+abstract class Things.Thing {
+# String name
++ void setName(String)
++ String getName()
+}
+class Creatures.Rachael {
+}
+class Creatures.Paskoy {
++ void eat(Meal)
++ void watch(int,Thing)
+}
+enum Enums.Seasons {
++  SUMMER
++  AUTUMN
++  WINTER
++  SPRING
++ {static} void tryhard(Seasons)
+}
+class SurroundingWorld.Garage {
+- int Occupancy
++ int getOccupancy()
++ void setOccupancy(int)
+}
+
+
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Path
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Home
+Interface.Feelingable <|.. Emotions.Fear
+Emotions.Fear +.. Emotions.Fear$Shudder
+Things.Thing <|-- Things.Underclothes
+Interface.PhysicalMove <|.. Creatures.Lyus
+Creatures.Person <|-- Creatures.Lyus
+Creatures.Lyus +.. Creatures.Lyus$Pain
+Things.Thing <|-- Things.Meal
+Exceptions.RuntimeException <|-- Exceptions.NoneEatingException
+Things.Thing <|-- Things.LaundryTank
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Road
+Exceptions.Throwable <|-- Exceptions.CarBreakdownException
+Interface.Feelingable <|.. Emotions.Wonderment
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Restaraunt
+Creatures.Person <|-- Creatures.Gage
+Interface.Feelingable <|.. Emotions.Happiness
+Creatures.Creatures <|-- Creatures.Person
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.ParkingLot
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Hospital
+Creatures.Creatures <|-- Creatures.Undernatural
+Creatures.Person <|-- Creatures.Rachael
+Interface.PhysicalMove <|.. Creatures.Paskoy
+Creatures.Person <|-- Creatures.Paskoy
+SurroundingWorld.EnvironmentObject <|-- SurroundingWorld.Garage
+@enduml
