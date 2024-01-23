@@ -1,5 +1,4 @@
 package things;
-
 public class Meal extends Thing {
     public Meal(String name, int Weight){
         super();

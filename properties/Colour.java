@@ -1,5 +1,4 @@
 package properties;
-
 public class Colour {
     private String name;
     public String getName(){

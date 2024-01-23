@@ -6,14 +6,12 @@ public class LaundryTank extends Thing{
         return this.underclothes;
     }
     public LaundryTank(Colour colour, Shape shape){
-
         super("Бак для грязного белья");
         this.colour = colour;
         this.shape = shape;
     }
     private Colour colour;
     private Shape shape;
-
     public String getColour(){
         return this.colour.getName();
     }

@@ -1,5 +1,4 @@
 package surroundingworld;
-
 public class Restaraunt extends EnvironmentObject {
     public Restaraunt(String cuisine){
         super("ресторанчик");

@@ -1,5 +1,4 @@
 package properties;
-
 public class Shape {
     private String name;
     public String getName(){

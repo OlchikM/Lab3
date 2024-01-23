@@ -1,7 +1,5 @@
 package surroundingworld;
-
 import creatures.Person;
-
 public class Road extends EnvironmentObject{
     public Road(){
         super("дорога");

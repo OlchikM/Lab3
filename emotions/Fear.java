@@ -1,9 +1,7 @@
 package emotions;
 import creatures.*;
 import interfaces.Feelingable;
-
 import java.util.Objects;
-
 public class Fear implements Feelingable {
     private String name;
     private int type;
@@ -23,7 +21,6 @@ public class Fear implements Feelingable {
         if ((o == null) || (this.getClass() != o.getClass())) return false;
         return (((Fear) o).getName().equals(this.name));
     }
-
     private int levelOfFear;
     public int getLevel(){
         return this.levelOfFear;
@@ -31,7 +28,6 @@ public class Fear implements Feelingable {
     public void setLevel(int s){
         this.levelOfFear = s;
     }
-
     class Shudder{
         String name;
         Shudder(){
@@ -51,5 +47,4 @@ public class Fear implements Feelingable {
     public String toString(){
         return "Было страшно.";
     }
-
 }

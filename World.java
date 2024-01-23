@@ -1,7 +1,4 @@
-
 import surroundingworld.EnvironmentObject;
-
-
 public abstract class World {
     public static void beOk(){
         System.out.println("Все было нормально.");

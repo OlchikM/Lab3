@@ -1,19 +1,17 @@
-
 import creatures.*;
 import things.*;
 import enums.*;
 import surroundingworld.*;
-
 import emotions.Fear;
 import emotions.Wonderment;
-import exceptions.CarBreakdownException;
+import exceptions.CarBreakDownException;
 import exceptions.NoneEatingException;
 import interfaces.PersonFactory;
 import properties.Colour;
 import properties.Shape;
-
 public class Main{
     public static void main(String[] args){
+        // first paragraph
         Lyus lyus = new Lyus();
         Car car = new Car("Машина", 1);
         Meal meal1 = new Meal("яичница", 8);
@@ -38,7 +36,7 @@ public class Main{
         garage.setOccupancy(car);
         try {
             lyus.driveACar(0, garage, car);
-        } catch (CarBreakdownException e) {
+        } catch (CarBreakDownException e) {
             System.out.println(e.getMessage());
             int f = lyus.getLevelOfEmotion3();
             lyus.setLevelOfHappiness(f);
@@ -49,11 +47,12 @@ public class Main{
         World.beOk(path);
         lyus.setStatement(new Wonderment(), 1, "Все ощущалось обычным");
         lyus.showStatement(1, 0 );
+        // second paragraph
         World.beOk();
         Home home = new Home();
         try {
             lyus.driveACar(0, garage, car);
-        } catch (CarBreakdownException e) {
+        } catch (CarBreakDownException e) {
             System.out.println(e.getMessage());
             int f = lyus.getLevelOfEmotion3();
             lyus.setLevelOfHappiness(f);
@@ -74,14 +73,9 @@ public class Main{
         Person.publicDrive(p1, p2, Time.YESTERDAY, vikipaskoy, hospital, bus, megaGarage);
         Meal meal2 = new Meal("му-гу-гай-пана", 7);
         vikipaskoy.eat(meal2);
+        // third paragraph
         lyus.setStatement(new Fear(), 10, "Осознание, что Вики Паскоу мертва");
         lyus.showStatement(0, 1);
         lyus.showThoughts("сходит с ума");
-
-
         }
-
-
-
-
     }

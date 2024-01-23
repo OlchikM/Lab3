@@ -1,5 +1,4 @@
 package enums;
-
 public enum TimeOfDay {
     MORNING {
         @Override
@@ -19,10 +18,7 @@ public enum TimeOfDay {
             return "Вечер";
         }
     };
-
-
     public static void beGreate(TimeOfDay e ){
         System.out.println(e.toString() + " выдалось просто чудесным");
     }
-
 }

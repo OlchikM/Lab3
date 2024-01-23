@@ -1,5 +1,4 @@
 package enums;
-
 public enum Time {
     YESTERDAY {
         @Override
@@ -12,8 +11,6 @@ public enum Time {
         public String toString() {
             return ("сегодня");
         }
-
-
     },
     TOMORROW {
         @Override

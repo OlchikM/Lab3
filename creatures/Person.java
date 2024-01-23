@@ -6,9 +6,7 @@ import enums.Survivability;
 import enums.Time;
 import exceptions.NotEnoughGasolineException;
 import surroundingworld.*;
-
 import java.util.Objects;
-
 public class Person extends Creatures {
     protected int satiety; //The satiety scale is from 1 to 10. if a person is in a normal state and healthy, satiety is 5, if hungry - less than 5, if overeated - more than 5.
     protected float tiredness; //The scale of human fatigue. In a normal state (more often in the morning or afternoon), when a person is healthy, the score is 5, in the late afternoon it is more than 5. if a person is ill - 8 or 9, after hard work it increases, on holidays or holidays about 2 or 3.
@@ -43,14 +41,14 @@ public class Person extends Creatures {
     public void setLevelOfHappiness(int L){
         this.emotion3.setLevel(L);
     }
-    public void changeLevelOfHappiness(int l, String sign) {
+    public void changeLevelOfHappiness(int delta, String sign) {
         if (sign.equals("-")) {
             int a = this.emotion3.getLevel();
-            a -= l;
+            a -= delta;
             this.setLevelOfHappiness(a);
         } else {
             int a = this.emotion3.getLevel();
-            a += l;
+            a += delta;
             this.setLevelOfHappiness(a);
         }
     }
@@ -70,21 +68,16 @@ public class Person extends Creatures {
     public int hashCode(){
         return Objects.hash(existence, name);
         }
-
     @Override
     public boolean equals(Object o){
         if (this == o) return true;
         if ((o == null) || (this.getClass() != o.getClass())) return false;
         return (((Person) o).getName().equals(this.name) && ((Person) o).getExistence().equals(this.existence));
     }
-
     @Override
     public String toString(){
         return this.name;
-    }
-
-    ;
-
+    };
     public Person(String name) {
         this.name = name;
         this.satiety = 5;
@@ -94,8 +87,6 @@ public class Person extends Creatures {
         this.emotion2 = new Fear();
         this.emotion1 = new Wonderment();
     }
-
-
     public static void publicDrive(Person p1, Person p2, Time m, Person p3, EnvironmentObject where, Car car, Garage garage) {
         boolean flag = true;
         try {

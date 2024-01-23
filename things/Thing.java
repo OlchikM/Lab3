@@ -1,5 +1,4 @@
 package things;
-
 public abstract class Thing {
     protected String name;
     public void setName(String name){
@@ -12,5 +11,4 @@ public abstract class Thing {
         this.name = name;
     }
     public Thing(){}
-
 }

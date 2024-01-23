@@ -1,7 +1,5 @@
 package surroundingworld;
-
 import interfaces.Drivable;
-
 public class Garage extends EnvironmentObject {
     public Garage(Car car) {
         super("гараж");
@@ -9,15 +7,10 @@ public class Garage extends EnvironmentObject {
         occupancy = 0;
     }
     private Car car;
-
-
-
     private int occupancy;
-
     public int getOccupancy() {
         return this.occupancy;
     }
-
     public void setOccupancy(Car car) { // The method parameter means which type of vehicle is put in the garage: 1- car, 2 - truck, 3 - bus. The garage can accommodate either 1 bus, a truck and a car, or up to 3 cars.
         int rangeOfTransport = car.getType();
         if (rangeOfTransport == 1){
@@ -53,9 +46,7 @@ public class Garage extends EnvironmentObject {
                 bus1.occupyTheGarage();
             }
             }
-
     public void beFree(Car car){
         this.occupancy -= car.getType();
     }
     }
-

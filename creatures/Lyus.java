@@ -21,7 +21,6 @@ public class Lyus extends Person implements PhysicalMove{
             this.setLevelOfHappiness(a);
             }
     }
-
     public Lyus(){
         super("Льюис");
         this.existence = Survivability.ALIVE;
@@ -129,21 +128,19 @@ public class Lyus extends Person implements PhysicalMove{
         }
     }
 
-    public void setStatement(Feelingable f, int m, String reason){
+    public void setStatement(Feelingable f, int level, String reason){
         Wonderment example1 = new Wonderment();
         Fear example2 = new Fear();
         Happiness example3 = new Happiness();
         if (f.equals(example1)){
-            this.emotion1.setLevel(m);
+            this.emotion1.setLevel(level);
         }
         if (f.equals(example2)){
-            this.emotion2.setLevel(m);
+            this.emotion2.setLevel(level);
         }
         if (f.equals(example3)){
-            this.emotion3.setLevel(m);
+            this.emotion3.setLevel(level);
         }
-
-
     }
     public void showStatement(int one, int two){
         if (one == 1){
@@ -159,7 +156,7 @@ public class Lyus extends Person implements PhysicalMove{
         level += 3;
         this.setTiredness(level);
     }
-    public void driveAway(EnvironmentObject p1, EnvironmentObject p2, Car car){
+    public void driveAway(EnvironmentObject nearbyObject1, EnvironmentObject nearbyObject2, Car car){
         boolean flag = true;
         try {
             int check = car.getAmountOfGasoline();
@@ -171,9 +168,9 @@ public class Lyus extends Person implements PhysicalMove{
             flag = false;
         }
         if (flag){
-        if (p1.getClass() == Road.class) {
-            if (p2.getClass() == ParkingLot.class) {
-                System.out.println(this.name + " свернул с " + p1.getName() + " на " + p2.toString());
+        if (nearbyObject1.getClass() == Road.class) {
+            if (nearbyObject2.getClass() == ParkingLot.class) {
+                System.out.println(this.name + " свернул с " + nearbyObject1.getName() + " на " + nearbyObject2.toString());
             }
         }
         int a = this.getConcentrationOfAttention();

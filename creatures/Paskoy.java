@@ -1,15 +1,12 @@
 package creatures;
-
 import enums.Survivability;
 import interfaces.PhysicalMove;
 import things.*;
-
 public class Paskoy extends Person implements PhysicalMove {
     public Paskoy(){
         super("Вику Паскоу");
         this.setExistence(Survivability.DIED);
     }
-
     @Override
     public void eat(Meal meal) {
         if (this.existence == Survivability.DIED) {
@@ -31,7 +28,6 @@ public class Paskoy extends Person implements PhysicalMove {
             System.out.println(this.name +" съел "+a);
         }
     }
-
     @Override
     public void watch(int level, Thing thing) {
         if (this.existence == Survivability.DIED) {

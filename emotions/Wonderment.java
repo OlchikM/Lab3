@@ -1,10 +1,7 @@
 package emotions;
-
 import creatures.Person;
 import interfaces.Feelingable;
-
 import java.util.Objects;
-
 public class Wonderment implements Feelingable {
     private String name;
     private int type;
@@ -33,7 +30,6 @@ public class Wonderment implements Feelingable {
     public int getLevel(){
         return this.levelofWonderment;
     }
-
     @Override
     public void showEmotion(Person p) {
         if (this.levelofWonderment < 5){
@@ -43,5 +39,4 @@ public class Wonderment implements Feelingable {
     public void setLevel(int s){
         this.levelofWonderment = s;
     }
-
 }

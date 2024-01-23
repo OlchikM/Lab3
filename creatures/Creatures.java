@@ -1,6 +1,5 @@
 package creatures;
 import enums.*;
-
 public abstract class Creatures {
     protected String name;
     protected Survivability existence;
@@ -13,8 +12,4 @@ public abstract class Creatures {
     public Survivability getExistence(){
         return this.existence;
     }
-
-
-
-
 }

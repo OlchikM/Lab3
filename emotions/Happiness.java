@@ -1,10 +1,7 @@
 package emotions;
-
 import interfaces.Feelingable;
 import creatures.*;
-
 import java.util.Objects;
-
 public class Happiness implements Feelingable {
     private String name;
     private int type;
@@ -30,7 +27,6 @@ public class Happiness implements Feelingable {
     public int getLevel(){
         return this.level;
     }
-
     public void showEmotion(Person p){ // Depending on the level of happiness, the current state of a person is displayed: he does not feel anything unusual, either he is depressed or he is happy.
         if (this.level == 5){
             System.out.println("Ничего особенного не чувствовалось. Не ощущались приливы радости, но и уныния не было.");
@@ -45,5 +41,4 @@ public class Happiness implements Feelingable {
     public void setLevel(int level){
         this.level = level;
     }
-
 }

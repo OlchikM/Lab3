@@ -1,5 +1,4 @@
 package surroundingworld;
-
 public class Hospital extends EnvironmentObject {
     private String sizeLevel;
     public Hospital(String size){

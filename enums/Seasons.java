@@ -1,5 +1,4 @@
 package enums;
-
 public enum Seasons {
     SUMMER {
         @Override
@@ -7,10 +6,24 @@ public enum Seasons {
             return "Лето";
         }
     },
-    AUTUMN,
-    WINTER,
-    SPRING;
-
+    AUTUMN{
+        @Override
+        public String toString() {
+            return "Осень";
+        }
+    },
+    WINTER{
+        @Override
+        public String toString() {
+            return "Зима";
+        }
+    },
+    SPRING{
+        @Override
+        public String toString() {
+            return "Весна";
+        }
+    };
     public  static  void tryhard(Seasons e) {
         System.out.println(e.toString() + " расстаралось вовсю.");
     }

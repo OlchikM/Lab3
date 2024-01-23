@@ -1,5 +1,4 @@
 package things;
-
 public class Underclothes extends Thing{
     private String levelOfCleanliness;
     public Underclothes(String LevelOfCleanliness){
