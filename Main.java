@@ -79,7 +79,6 @@ public class Main{
         lyus.showThoughts("сходит с ума");
 
 
-
         }
 
 
