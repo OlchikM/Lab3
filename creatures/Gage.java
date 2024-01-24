@@ -1,6 +1,5 @@
 package creatures;
 import enums.*;
-
 public class Gage extends Person{
     public Gage(){
         super();

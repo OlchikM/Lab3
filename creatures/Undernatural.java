@@ -1,5 +1,4 @@
 package creatures;
-
 public class Undernatural extends Creatures{
     Undernatural(){
         this.name = "сверхъестественное";

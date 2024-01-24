@@ -96,7 +96,7 @@ public class Lyus extends Person implements PhysicalMove{
             this.upgradeConcentration(2);
         }
     }
-    public void driveACar(int distance, EnvironmentObject p, Car car) throws CarBreakdownException {
+    public void driveACar(int distance, EnvironmentObject p, Car car) throws CarBreakDownException {
         boolean flag = true;
         try {
             int check = car.getAmountOfGasoline();
@@ -109,7 +109,7 @@ public class Lyus extends Person implements PhysicalMove{
         }
         if (flag) {
             if (distance < 0) {
-                throw new CarBreakdownException("Ой, машина сломалась!");
+                throw new CarBreakDownException("Ой, машина сломалась!");
             }
             if (distance == 0) {
                 System.out.println("Выезжая" + " " + "из" + " " + p.getName());
