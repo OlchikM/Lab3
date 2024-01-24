@@ -7,6 +7,40 @@ import surroundingworld.*;
 import things.*;
 import exceptions.*;
 public class Lyus extends Person implements PhysicalMove{
+    class Body{
+        private boolean beauty;
+        public void setBeauty(boolean beauty){
+            this.beauty = beauty;
+        }
+        private int health; // 10 - okay, 0 - very bad
+        public void setHealth(int health){
+            this.health = health;
+        }
+        private Body(){
+            this.health = 8;
+        }
+    }
+    class Head{
+        private boolean migraine;
+        private void setMigraine(boolean migraine){
+            this.migraine = migraine;
+        }
+        private int mentality; // 0 or 1, 1 - mentality is okay
+        public void setMentality(int mentality){
+            this.mentality = mentality;
+        }
+        private int intelligence; // from 1 to 10
+        public void setIntelligence(int intelligence){
+            this.intelligence = intelligence;
+        }
+        private Head(){
+            this.migraine = false;
+            this.intelligence = 5;
+            this.mentality = 1;
+        }
+    }
+    Body body = new Body();
+    Head head = new Head();
     private final Wonderment emotion1;
     private final Fear emotion2;
     private final Happiness emotion3;
@@ -74,15 +108,15 @@ public class Lyus extends Person implements PhysicalMove{
             String shapet = ((LaundryTank) thing).getShape();
             if ((level < 5) && (level > 0)) {
                 System.out.println(this.name + " мельком взглянул на " + colourt + " " + shapet + " " + namet);
-                this.upgradeConcentration(1);
+                this.changeConcentration(1, "+");
             } else if ((level >= 5) && (level <= 10)){
                 System.out.println(this.name + " посмотрел на " + colourt + " " + shapet + " " + namet);
-                this.upgradeConcentration(2);
+                this.changeConcentration(2, "+");
             }
         }
         else {
             System.out.println(this.name + " посмотрел на " + thing.getName() );
-            this.downgradeConcentration(1);
+            this.changeConcentration(1, "-");
             }
 
     }
@@ -102,35 +136,40 @@ public class Lyus extends Person implements PhysicalMove{
     public void watch(int level, EnvironmentObject environmentObject){
         if (level == 5) {
             System.out.println(this.name + " посмотрел" + " " + "на"  + " " + environmentObject.getName());
-            this.upgradeConcentration(1);
+            this.changeConcentration(1, "+");
         }
         if ((level > 5) && (level <= 10)){
             System.out.println(this.name + " уставился на " + environmentObject.getName());
-            this.upgradeConcentration(2);
+            this.changeConcentration(2, "+");
         }
     }
-    public void driveACar(int distance, EnvironmentObject p, Car car) throws CarBreakDownException {
+    public void driveACar(int distance, EnvironmentObject p, Car car) {
         boolean flag = helpingDriving(car);
         if (flag) {
-            if (distance < 0) {
-                throw new CarBreakDownException("Ой, машина сломалась!");
-            }
-            if (distance == 0) {
-                System.out.println("Выезжая" + " " + "из" + " " + p.getName());
-                ((Garage)p).beFree(car);
-            } else {
-                System.out.println(" " + this.name + " отъехал" + " " + "от" + " " + "домa" + " " + "миль" + " " + "на" + " " + distance);
-                int amount = car.getAmountOfGasoline();
-                if (distance<=5){
-                    amount -= 2;
-                    car.setAmountOfGasoline(amount);
-                } else{
-                    amount -= 3;
-                    car.setAmountOfGasoline(amount);
+            try {
+                if (distance < 0) {
+                    throw new CarBreakDownException("Ой, машина сломалась!", this);
+                }
+            } catch (CarBreakDownException e) {
+                    System.out.println(e.getMessage());
+                    System.out.println("Поломка машины очень расстроила водителя!");}
+                if (distance == 0) {
+                    System.out.println("Выезжая" + " " + "из" + " " + p.getName());
+                    ((Garage) p).beFree(car);
+                } else if (distance > 0){
+                    System.out.println(" " + this.name + " отъехал" + " " + "от" + " " + "домa" + " " + "миль" + " " + "на" + " " + distance);
+                    int amount = car.getAmountOfGasoline();
+                    if (distance <= 5) {
+                        amount -= 2;
+                        car.setAmountOfGasoline(amount);
+                    } else {
+                        amount -= 3;
+                        car.setAmountOfGasoline(amount);
+                    }
                 }
             }
         }
-    }
+
 
     public void setStatement(Feelingable f, int level, String reason){
         Wonderment example1 = new Wonderment();
@@ -195,21 +234,23 @@ public class Lyus extends Person implements PhysicalMove{
         void influencePerson(int level, Person p) { //The method describes what happens to a person and reduces a person's level of happiness and concentration. If the pain is above the acceptable limit, that person is dying.
             if ((level < 5) && (level > 0)) {
                 System.out.println("Голова слегка побаливала, чувствовалось лёгкое недомогание.");
+                head.setMigraine(true);
                 p.changeLevelOfHappiness(1, "-");
                 this.level = level;
-                p.downgradeConcentration(1);
+                p.changeConcentration(1, "-");
             }
             if ((level >= 5) && (level < 10)){
                 System.out.println("Во свсём теле ощущалась сильная, ноющая боль.");
                 p.changeLevelOfHappiness(2, "-");
                 this.level = level;
-                p.downgradeConcentration(2);
+                p.changeConcentration(2, "-");
             };
             if (level == 10){
                 System.out.println("В голову словно вкручивали раскаленную проволоку");
+                body.setHealth(1);
                 p.changeLevelOfHappiness(3, "-");
                 this.level = level;
-                p.downgradeConcentration(3);
+                p.changeConcentration(3, "-");
             }
             if (level > 10){
                 p.setExistence(Survivability.DIED);

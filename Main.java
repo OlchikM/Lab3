@@ -34,14 +34,7 @@ public class Main{
         World.beOk();
         Garage garage = new Garage(car);
         garage.setOccupancy(car);
-        try {
-            lyus.driveACar(0, garage, car);
-        } catch (CarBreakDownException e) {
-            System.out.println(e.getMessage());
-            int f = lyus.getLevelOfEmotion3();
-            lyus.setLevelOfHappiness(f);
-            System.out.println("Поломка машины очень расстроила водителя");
-        }
+        lyus.driveACar(0, garage, car);
         Path path = new Path();
         lyus.watch(5, path);
         World.beOk(path);
@@ -50,14 +43,7 @@ public class Main{
         // second paragraph
         World.beOk();
         Home home = new Home();
-        try {
-            lyus.driveACar(0, garage, car);
-        } catch (CarBreakDownException e) {
-            System.out.println(e.getMessage());
-            int f = lyus.getLevelOfEmotion3();
-            lyus.setLevelOfHappiness(f);
-            System.out.println("Поломка машины очень расстроила водителя");
-        }
+        lyus.driveACar(0, garage, car);
         Road road = new Road();
         road.beRough(lyus);
         Restaraunt restaraunt = new Restaraunt("китайский");

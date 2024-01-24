@@ -17,11 +17,12 @@ public class Person extends Creatures {
     public int getConcentrationOfAttention(){
         return this.concentrationOfAttention;
     }
-    public void upgradeConcentration(int level){
-        this.concentrationOfAttention += level;
-    }
-    public void downgradeConcentration(int level){
-        this.concentrationOfAttention -= level;
+    public void changeConcentration(int level, String sign){
+        if (sign.equals("-")) {
+            this.concentrationOfAttention -= level;
+        } else {
+            this.concentrationOfAttention += level;
+        }
     }
     protected Wonderment emotion1;
     protected Fear emotion2;
@@ -87,7 +88,7 @@ public class Person extends Creatures {
         this.emotion2 = new Fear();
         this.emotion1 = new Wonderment();
     }
-    public static void publicDrive(Person p1, Person p2, Time m, Person p3, EnvironmentObject where, Car car, Garage garage) {
+    public static void publicDrive(Person person1, Person person2, Time day, Person p3, EnvironmentObject where, Car car, Garage garage) {
         boolean flag = true;
         try {
             int check = car.getAmountOfGasoline();
@@ -95,11 +96,11 @@ public class Person extends Creatures {
                 throw new NotEnoughGasolineException("Ой! Бензина недостаточно!");
             }
         } catch (NotEnoughGasolineException e) {
-            System.out.println(e.getMessage());
+            System.out.printf(e.getMessage());
             flag = false;
         }
         if (flag){
-        if (m == Time.YESTERDAY) {
+        if (day == Time.YESTERDAY) {
             if (p3.getExistence() == Survivability.DIED) {
                 System.out.println("В " + where.toString() + " " + "вчера увезли тело " + p3.getName());
                 garage.beFree(car);
