@@ -3,8 +3,8 @@ import creatures.*;
 import interfaces.Feelingable;
 import java.util.Objects;
 public class Fear implements Feelingable {
-    private String name;
-    private int type;
+    private final String name;
+    private final int type;
     public String getName(){
         return this.name;
     }

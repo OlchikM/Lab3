@@ -3,8 +3,8 @@ import interfaces.Feelingable;
 import creatures.*;
 import java.util.Objects;
 public class Happiness implements Feelingable {
-    private String name;
-    private int type;
+    private final String name;
+    private final int type;
     public Happiness(){
         this.name = "счастье";
         this.level = 5;

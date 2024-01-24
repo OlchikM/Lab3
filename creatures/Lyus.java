@@ -7,9 +7,9 @@ import surroundingworld.*;
 import things.*;
 import exceptions.*;
 public class Lyus extends Person implements PhysicalMove{
-    private Wonderment emotion1;
-    private Fear emotion2;
-    private Happiness emotion3;
+    private final Wonderment emotion1;
+    private final Fear emotion2;
+    private final Happiness emotion3;
     public void changeLevelOfHappiness(int l, String sign) {
         if (sign.equals("-")) {
             int a = this.emotion3.getLevel();
@@ -86,6 +86,19 @@ public class Lyus extends Person implements PhysicalMove{
             }
 
     }
+    private boolean helpingDriving(Car car){
+        boolean flag = true;
+        try {
+            int check = car.getAmountOfGasoline();
+            if (check <= 3) {
+                throw new NotEnoughGasolineException("Ой! Бензина недостаточно!");
+            }
+        } catch (NotEnoughGasolineException e) {
+            System.out.println(e.getMessage());
+            flag = false;
+        }
+        return flag;
+    }
     public void watch(int level, EnvironmentObject environmentObject){
         if (level == 5) {
             System.out.println(this.name + " посмотрел" + " " + "на"  + " " + environmentObject.getName());
@@ -97,16 +110,7 @@ public class Lyus extends Person implements PhysicalMove{
         }
     }
     public void driveACar(int distance, EnvironmentObject p, Car car) throws CarBreakDownException {
-        boolean flag = true;
-        try {
-            int check = car.getAmountOfGasoline();
-            if (check <= 3) {
-                throw new NotEnoughGasolineException("Ой! Бензина недостаточно!");
-            }
-        } catch (NotEnoughGasolineException e) {
-            System.out.println(e.getMessage());
-            flag = false;
-        }
+        boolean flag = helpingDriving(car);
         if (flag) {
             if (distance < 0) {
                 throw new CarBreakDownException("Ой, машина сломалась!");
@@ -114,7 +118,7 @@ public class Lyus extends Person implements PhysicalMove{
             if (distance == 0) {
                 System.out.println("Выезжая" + " " + "из" + " " + p.getName());
                 ((Garage)p).beFree(car);
-            } else if (distance > 0) {
+            } else {
                 System.out.println(" " + this.name + " отъехал" + " " + "от" + " " + "домa" + " " + "миль" + " " + "на" + " " + distance);
                 int amount = car.getAmountOfGasoline();
                 if (distance<=5){
@@ -157,16 +161,7 @@ public class Lyus extends Person implements PhysicalMove{
         this.setTiredness(level);
     }
     public void driveAway(EnvironmentObject nearbyObject1, EnvironmentObject nearbyObject2, Car car){
-        boolean flag = true;
-        try {
-            int check = car.getAmountOfGasoline();
-            if (check <= 3) {
-                throw new NotEnoughGasolineException("Ой! Бензина недостаточно!");
-            }
-        } catch (NotEnoughGasolineException e) {
-            System.out.println(e.getMessage());
-            flag = false;
-        }
+        boolean flag = helpingDriving(car);
         if (flag){
         if (nearbyObject1.getClass() == Road.class) {
             if (nearbyObject2.getClass() == ParkingLot.class) {

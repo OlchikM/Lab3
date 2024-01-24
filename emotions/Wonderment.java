@@ -3,8 +3,8 @@ import creatures.Person;
 import interfaces.Feelingable;
 import java.util.Objects;
 public class Wonderment implements Feelingable {
-    private String name;
-    private int type;
+    private final String name;
+    private final int type;
     public Wonderment(){
         this.name = "удивление";
         this.type = 3;
@@ -26,17 +26,17 @@ public class Wonderment implements Feelingable {
         if ((o == null) || (this.getClass() != o.getClass())) return false;
         return (((Wonderment) o).getName().equals(this.name));
     }
-    private int levelofWonderment = 0;
+    private int levelOfWonderment = 0;
     public int getLevel(){
-        return this.levelofWonderment;
+        return this.levelOfWonderment;
     }
     @Override
     public void showEmotion(Person p) {
-        if (this.levelofWonderment < 5){
+        if (this.levelOfWonderment < 5){
             System.out.println(p.getName() + " даже бровью не повёл");
         }
     }
     public void setLevel(int s){
-        this.levelofWonderment = s;
+        this.levelOfWonderment = s;
     }
 }
